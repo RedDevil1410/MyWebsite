@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moving Ball</title>
+<style>
+    #ball {
+        width: 50px;
+        height: 50px;
+        background-color: red;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transition: left 2s linear;
+    }
+</style>
+</head>
+<body>
+<div id="ball"></div>
+
+<script>
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "1") {
+            moveBall();
+        }
+    });
+
+    function moveBall() {
+        var ball = document.getElementById("ball");
+        var screenWidth = window.innerWidth;
+        var ballWidth = ball.offsetWidth;
+        var finalPosition = screenWidth - ballWidth;
+
+        ball.style.left = finalPosition + "px";
+
+        // Reset ball position after 2 seconds
+        setTimeout(function() {
+            ball.style.left = "0";
+        }, 2000);
+    }
+</script>
